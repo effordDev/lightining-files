@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Lightning Files</masterLabel>
+    <description>
+        This component displays all files related to a record. 
+        Please feed the recordId attribute the Id of the record in which the files 
+        needs to be display for.
+    </description>
+
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="showUploadButton" label="Show Upload Button" type="Boolean" default="true"/>
+            <property name="recordId" label="Record ID" type="String" />
+        </targetConfig>
+    </targetConfigs>
+
+</LightningComponentBundle>
