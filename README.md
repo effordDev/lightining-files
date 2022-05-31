@@ -1,5 +1,11 @@
 # sf-lightining-files
+
 This component displays all files related to a record. works for both internal and communities
+
+By default, you can upload up to 10 files simultaneously unless your Salesforce admin has changed that limit. 
+The org limit for the number of files simultaneously uploaded is a maximum of 25 files and a minimum of 1 file. The maximum file size you can upload is 2 GB. 
+
+In Experience Builder sites, the file size limits and types allowed follow the settings determined by site file moderation.
 
 <a href="https://githubsfdeploy.herokuapp.com">
   <img alt="Deploy to Salesforce"
