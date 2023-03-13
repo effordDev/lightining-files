@@ -39,6 +39,7 @@ export default class LightningFiles extends NavigationMixin(LightningElement) {
           
           this.setFiles()
           this.successToast('File Uploaded')
+          this.dispatchEvent(new CustomEvent('uploaded'))
      }
 
      viewFile(event) {
