@@ -16,6 +16,10 @@
     </targets>
     
     <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="showUploadButton" label="Show Upload Button" type="Boolean" default="true"/>
+        </targetConfig>
+    
         <targetConfig targets="lightning__FlowScreen,lightningCommunity__Default">
             <property name="showUploadButton" label="Show Upload Button" type="Boolean" default="true"/>
             <property name="recordId" label="Record ID" type="String" />
