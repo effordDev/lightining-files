@@ -11,3 +11,8 @@ In Experience Builder sites, the file size limits and types allowed follow the s
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
+
+![image](https://user-images.githubusercontent.com/36901822/224725356-f1b5fa5d-b3ea-4389-a3f9-e9cf682894e0.png)
+
+File Click Preview
+![image](https://user-images.githubusercontent.com/36901822/224725494-0daea06f-3368-47f0-a73d-77305e6ff193.png)
