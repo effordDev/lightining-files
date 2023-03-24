@@ -1,30 +1,30 @@
 <template>
-     <lightning-card icon-name="standard:document" title={title}>
-        
-        <template if:true={showUploadButton}>
-            <lightning-file-upload
-                label="Attach File"
-                name="fileUploader"
-                record-id={recordId}
-                onuploadfinished={onUploadFinish}>
-            </lightning-file-upload>
-        </template>
+    <lightning-card icon-name="standard:document" title={title}>
+       
+       <template if:true={showUploadButton}>
+           <lightning-file-upload
+               label="Attach File"
+               name="fileUploader"
+               record-id={recordId}
+               onuploadfinished={onUploadFinish}>
+           </lightning-file-upload>
+       </template>
 
-        <br />
-          
-        <template for:each={files} for:item="file">
-            <div key={file.Id} class="selector">
-                <span>
-                    <lightning-icon icon-name="utility:file"></lightning-icon>
-                </span>
-                <span key={file.Id} class="files slds-text-body_small" onclick={viewFile} data-id={file.ContentDocumentId}>
-                    {file.PathOnClient}
-                </span>
-                <div key={file.Id} class="info">
-                    <lightning-formatted-date-time key={file.Id} value={file.ContentModifiedDate}></lightning-formatted-date-time>
-                </div>
-            </div>
-        </template>
- 
-     </lightning-card>
- </template>
+       <br />
+         
+       <template for:each={files} for:item="file">
+           <div key={file.Id} class="selector">
+               <span>
+                   <lightning-icon icon-name={file.icon}></lightning-icon>
+               </span>
+               <span key={file.Id} class="files slds-text-body_small" onclick={viewFile} data-id={file.ContentDocumentId}>
+                   {file.Title}
+               </span>
+               <div key={file.Id} class="info">
+                   <lightning-formatted-date-time key={file.Id} value={file.ContentModifiedDate}></lightning-formatted-date-time>
+               </div>
+           </div>
+       </template>
+
+    </lightning-card>
+</template>

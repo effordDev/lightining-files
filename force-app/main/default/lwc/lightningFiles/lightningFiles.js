@@ -2,13 +2,16 @@ import { api, LightningElement } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getMimeTypeFromExtension } from './utils';
+import { fileTypesMap } from './utils';
 import getFiles from '@salesforce/apex/lightningFilesHelper.getFiles'
 import isCommunity from '@salesforce/apex/lightningFilesHelper.isCommunity'
+import renameFiles from '@salesforce/apex/lightningFilesHelper.renameFiles'
 
 export default class LightningFiles extends NavigationMixin(LightningElement) {
      @api recordId
      @api showUploadButton
      @api showPreviewInFlow
+     @api fileName = ''
      isCom = false
      files = []
 
@@ -27,16 +30,24 @@ export default class LightningFiles extends NavigationMixin(LightningElement) {
      }
 
      async setFiles() {
-          this.files = await getFiles({ recordId:this.recordId })
-          this.len = this.files.length
+          this.files = (await getFiles({ recordId:this.recordId })).map(f =>{
+               f.icon = `doctype:${fileTypesMap(f.FileExtension)}`
+               return f
+          })
 
-          console.log('files')
-          console.log(JSON.parse(JSON.stringify(this.files)))
+
+          this.len = this.files.length
      }
     
      async onUploadFinish(event) {
           console.log('Success')
-          
+
+          const contentVersionIds = event.detail.files.map(f => f.contentVersionId)
+
+          if (this.fileName && contentVersionIds.length) {
+               await renameFiles({ contentVersionIds, name: this.fileName })
+          }
+
           this.setFiles()
           this.successToast('File Uploaded')
           this.dispatchEvent(new CustomEvent('uploaded'))
@@ -45,7 +56,7 @@ export default class LightningFiles extends NavigationMixin(LightningElement) {
      viewFile(event) {
           const ContentDocumentId = event.currentTarget.dataset.id
   
-          console.log({ ContentDocumentId })
+          // console.log({ ContentDocumentId })
   
           if(this.isCom) {
               this[NavigationMixin.Navigate]({

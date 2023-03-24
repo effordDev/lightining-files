@@ -1,5 +1,5 @@
 /**
- * cretaed/written by Reid Efford - https://github.com/effordDev
+ * Reid Efford - https://github.com/effordDev
  */
 @isTest
 public with sharing class lightningFilesHelperTest {
@@ -25,7 +25,11 @@ public with sharing class lightningFilesHelperTest {
             cdl.shareType = 'V';
         insert cdl;
 
-        lightningFilesHelper.getFiles([SELECT Id FROM Contact LIMIT 1].Id);
+        List<ContentVersion> files = lightningFilesHelper.getFiles([SELECT Id FROM Contact LIMIT 1].Id);
+
+        List<Id> cvids = new List<Id>{files[0].Id};
+
+        lightningFilesHelper.renameFiles(cvids, 'test');
         lightningFilesHelper.isCommunity();
     }
 }

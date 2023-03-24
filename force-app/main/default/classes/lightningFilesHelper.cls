@@ -1,5 +1,5 @@
 /**
- * cretaed/written by Reid Efford - https://github.com/effordDev
+ * Reid Efford - https://github.com/effordDev
  */
 public with sharing class lightningFilesHelper {
 
@@ -28,6 +28,21 @@ public with sharing class lightningFilesHelper {
 
         return versions;
     } 
+
+    @AuraEnabled
+    public static void renameFiles(List<Id> contentVersionIds, String name){
+        List<ContentVersion> versions = [
+            SELECT Id, Title
+            FROM ContentVersion 
+            WHERE Id IN : contentVersionIds
+        ];
+
+        for (ContentVersion v : versions ) {
+            v.Title = name;
+        }
+
+        update versions;
+    }
 
     @AuraEnabled
     public static Boolean isCommunity(){
