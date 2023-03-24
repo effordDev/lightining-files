@@ -7,6 +7,12 @@ The org limit for the number of files simultaneously uploaded is a maximum of 25
 
 In Experience Builder sites, the file size limits and types allowed follow the settings determined by site file moderation.
 
+### Props
+- recordId
+- showUploadButton
+- showPreviewInFlow
+- fileName  
+
 <a href="https://githubsfdeploy.herokuapp.com">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
